@@ -33,11 +33,7 @@ bool MatchDllName(const UNICODE_STRING* fullDllName, LPCSTR lpModuleName) {
 
 
 inline PPEB GetCurrentPEB() {
-#ifdef _M_X64
-    return (PPEB)__readgsqword(0x60); // Read 64-bit value at GS:0x60
-#elif _M_IX86
-    return (PPEB)__readfsdword(0x30);
-#endif
+    return (PPEB)__readgsqword(0x60);
 }
 
 void printAllDlls() {
